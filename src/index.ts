@@ -1,4 +1,5 @@
 import { ApolloServer, gql } from "apollo-server";
+import dataSources from "./dataSources";
 
 // This is a (sample) collection of books we'll be able to query
 // the GraphQL server for.  A more complete example might fetch
@@ -29,6 +30,7 @@ const typeDefs = gql`
   # (A "Mutation" type will be covered later on.)
   type Query {
     books: [Book]
+    dataSourceTest: String!
   }
 `;
 
@@ -36,7 +38,10 @@ const typeDefs = gql`
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    books: () => books
+    books: () => books,
+    dataSourceTest: (parent, args, { dataSources }) => {
+      return dataSources.books.id;
+    }
   }
 };
 
@@ -46,6 +51,7 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  dataSources: dataSources,
   introspection: true,
   playground: true
 });
