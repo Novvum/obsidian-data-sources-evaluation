@@ -1,0 +1,21 @@
+{
+  "name": "data-sources-evaluation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Rohit <rohit@novvuminc.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "apollo-datasource-rest": "^0.6.0",
+    "apollo-server": "^2.7.0",
+    "graphql": "^14.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}
