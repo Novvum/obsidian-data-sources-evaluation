@@ -6,6 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "nodemon"
   },
   "dependencies": {
@@ -15,7 +17,11 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "apollo-server-testing": "^2.7.0",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1",
+    "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   }
