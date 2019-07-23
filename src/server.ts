@@ -23,6 +23,7 @@ const typeDefs = gql`
   # This "Book" type can be used in other type declarations.
   type Book {
     id: ID!
+    dlId: ID!
     title: String
     author: String
   }
@@ -31,7 +32,8 @@ const typeDefs = gql`
   # (A "Mutation" type will be covered later on.)
   type Query {
     books: [Book]
-    dataSourceTest: String!
+    dataSourceTest: ID!
+    dataLoaderTest: ID!
   }
 `;
 
@@ -42,10 +44,14 @@ const resolvers = {
     books: (parent, args, { dataSources }) =>
       books.map(book => ({
         ...book,
+        dlId: dataSources.books.dataLoader.id,
         id: dataSources.books.id
       })),
     dataSourceTest: (parent, args, { dataSources }) => {
       return dataSources.books.id;
+    },
+    dataLoaderTest: (parent, args, { dataSources }) => {
+      return dataSources.books.dataLoader.id;
     }
   }
 };
